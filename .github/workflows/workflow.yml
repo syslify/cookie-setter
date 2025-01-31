@@ -3,6 +3,7 @@ name: Publish Chrome Extension
 on:
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   build-chrome-extension:
@@ -49,3 +50,11 @@ jobs:
             --client-id ${{ secrets.CI_GOOGLE_CLIENT_ID }} \\
             --client-secret ${{ secrets.CI_GOOGLE_CLIENT_SECRET }} \\
             --refresh-token ${{ secrets.CI_GOOGLE_REFRESH_TOKEN }}
+
+  test-environment:
+    name: Test env
+    environment: test
+    runs-on: ubuntu-latest
+    steps:
+     - run: echo ${{ secrets.test }}
+    
