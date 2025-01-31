@@ -4,6 +4,7 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+  push:
 
 jobs:
   build-chrome-extension:
@@ -53,8 +54,8 @@ jobs:
 
   test-environment:
     name: Test env
-    environment: test
+    environment: production
     runs-on: ubuntu-latest
     steps:
-     - run: echo ${{ secrets.test }}
+     - run: echo ${{ secrets.TEST }}
     
